@@ -95,7 +95,8 @@ fit.SR <- function(SRdata,
                    max.ssb.pred=1.3, # 予測値を計算するSSBの最大値（観測された最大値への乗数）
                    p0=NULL,
                    out.AR = TRUE, #自己相関係数rhoを外で推定するか
-                   rep.opt = FALSE
+                   rep.opt = FALSE,
+                   gamma = 1
 ){
 
   argname <- ls()
@@ -113,6 +114,8 @@ fit.SR <- function(SRdata,
   if (SR=="HS") SRF <- function(x,a,b) ifelse(x>b,b*a,x*a)
   if (SR=="BH") SRF <- function(x,a,b) a*x/(1+b*x)
   if (SR=="RI") SRF <- function(x,a,b) a*x*exp(-b*x)
+  if (SR=="SP") SRF <- function(x,a,b) a*x/(1+b*x^gamma)
+  if (SR=="PW") SRF <- function(x,a,b) a*x^b
   
   if (length(SRdata$R) != length(w)) stop("The length of 'w' is not appropriate!")
   
@@ -200,6 +203,7 @@ fit.SR <- function(SRdata,
     a.range <- range(rec/ssb)
     b.range <- range(1/ssb)
     if (SR == "HS") b.range <- range(ssb)
+    if (SR == "PW") b.range <- c(0.1,10)
     grids <- as.matrix(expand.grid(
       seq(a.range[1],a.range[2],len=length),
       seq(b.range[1],b.range[2],len=length)
@@ -305,6 +309,7 @@ fit.SR <- function(SRdata,
   Res$pred <- pred.data
 
   Res$k <- k <- length(opt$par)+1
+  if (SR == "SP") Res$k <- k <- Res$k + 1 #gammaの分
   Res$AIC <- -2*loglik+2*k
   Res$AICc <- Res$AIC+2*k*(k+1)/(NN-k-1)
   Res$BIC <- -2*loglik+k*log(NN)
