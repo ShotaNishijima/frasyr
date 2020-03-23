@@ -124,7 +124,7 @@ fit.SR <- function(SRdata,
   one_max = max(SRdata$year[w>0])
   zero_min =ifelse(sum(w==0)>0, min(SRdata$year[w==0]),one_max)
   
-  if (method == "L2" && AR==1 && out.AR==FALSE && zero_min<one_max) { # For Jackknife
+  if (method == "L2" && AR==1 && zero_min<one_max) { # For Jackknife
     
     obj.f = function(a,b,rho,out = "nll") {
       w2 = as.numeric(w>0)
@@ -177,7 +177,7 @@ fit.SR <- function(SRdata,
       if (out=="sd") return(sd)
     }
   } else {
-    obj.f <- function(a,b,rho){
+    obj.f <- function(a,b,rho,out="nll"){
       resid <- sapply(1:N,function(i) log(rec[i]) - log(SRF(ssb[i],a,b)))
       resid2 <- NULL
       for (i in 1:N) {
@@ -197,7 +197,11 @@ fit.SR <- function(SRdata,
         sd2 <- c(sd/sqrt(1-rho^2), rep(sd,N-1))
         obj <- -sum(w*sapply(1:N, function(i){-log(2*sd2[i])-abs(resid2[i]/sd2[i])}))
       }
-      return(obj)
+      # return(obj)
+      if (out=="nll") return(obj)
+      if (out=="resid") return(resid)
+      if (out=="resid2") return(resid2)
+      if (out=="sd") return(sd)
     }
     }
 
@@ -252,7 +256,7 @@ fit.SR <- function(SRdata,
   b <- ifelse(SR=="HS",min(ssb)+(max(ssb)-min(ssb))/(1+exp(-opt$par[2])),exp(opt$par[2]))
   rho <- ifelse(AR==0,0,ifelse(out.AR,0,1/(1+exp(-opt$par[3]))))
   
-  if (method == "L2" && AR==1 && out.AR==FALSE && zero_min<one_max) {
+  if (method == "L2" && AR==1 && zero_min<one_max) {
     resid = obj.f(a=a,b=b,rho=rho,out="resid")
     resid2 = obj.f(a=a,b=b,rho=rho,out="resid2")
     sd <- sd.pred <- obj.f(a=a,b=b,rho=rho,out="sd")
@@ -297,15 +301,25 @@ fit.SR <- function(SRdata,
   }
 
   if (AR==1 && out.AR) {
-    arres <- ar(resid,aic=FALSE,order.max=1,demean=FALSE,method="mle")
-    Res$pars[3] <- Res$sd.pred <-sqrt(arres$var.pred)
-    Res$pars[4] <- as.numeric(arres$ar)
-    Res$resid2[2:length(Res$resid2)] <- arres$resid[-1]
-    Res$AIC.ar  <- ar(resid,order.max=1,demean=FALSE,method="mle")$aic
+    arres <- optimize(function(x) obj.f(a=a,b=b,rho=x), interval = c(-0.99,0.99))
+    rho = arres$minimum
+    # arres <- ar(resid,aic=FALSE,order.max=1,demean=FALSE,method="mle")
+    # arres$ar
+    Res$pars[3] <- Res$sd.pred <- obj.f(a=a,b=b,rho=rho,out="sd")
+    Res$pars[4] <- rho
+    Res$resid2 <- obj.f(a=a,b=b,rho=rho,out="resid2")
+    Res$loglik.ar <- loglik.ar <- c(-obj.f(a=a,b=b,rho=0),-arres$objective)
+    k.ar <- c(1,2)
+    AIC.ar <- -2*loglik.ar+2*k.ar
+    AICc.ar <- AIC.ar+2*k.ar*(k.ar+1)/(sum(w)-k.ar-1)
+    BIC.ar <- -2*loglik.ar+k.ar*log(sum(w))
+    Res$AIC.ar <- AIC.ar - min(AIC.ar)
+    Res$AICc.ar <- AICc.ar - min(AICc.ar)
+    Res$BIC.ar <- BIC.ar - min(BIC.ar)
+    # Res$AIC.ar  <- ar(resid,order.max=1,demean=FALSE,method="mle")$aic
   }
 
   Res$loglik <- loglik <- -opt$value
-
   names(Res$pars) <- c("a","b","sd","rho")
   Res$pars <- data.frame(t(Res$pars))
   #  Res$gamma <- gamma
@@ -1550,6 +1564,7 @@ out.SR = function(resSR,filename = "resSR") {
   if (class(resSR) == "fit.SR") {
     RES$AR = resSR$input$AR
     RES$out.AR = resSR$input$out.AR
+    if (resSR$input$SR=="SP") RES$gamma = resSR$input$gamma
     RES$pars = resSR$pars
   } else {
     RES$regime.year = resSR$input$regime.year

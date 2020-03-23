@@ -16,7 +16,8 @@ fit.SR(
   max.ssb.pred = 1.3,
   p0 = NULL,
   out.AR = TRUE,
-  rep.opt = FALSE
+  rep.opt = FALSE,
+  gamma = 1
 )
 }
 \arguments{
