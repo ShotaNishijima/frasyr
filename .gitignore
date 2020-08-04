@@ -34,5 +34,4 @@ rsconnect/
 *~
 .[#]*
 .Rproj.user
-
-
+*.dll
