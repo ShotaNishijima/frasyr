@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>レトロスペクティブ解析の実施 — retro.est • frasyr</title>
+<title>re-calculate projection with different arguments — redo_future • frasyr</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="レトロスペクティブ解析の実施 — retro.est" />
-<meta property="og:description" content="レトロスペクティブ解析の実施" />
+<meta property="og:title" content="re-calculate projection with different arguments — redo_future" />
+<meta property="og:description" content="re-calculate projection with different arguments" />
 
 
 
@@ -115,50 +115,17 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>レトロスペクティブ解析の実施</h1>
+    <h1>re-calculate projection with different arguments</h1>
     
-    <div class="hidden name"><code>retro.est.Rd</code></div>
+    <div class="hidden name"><code>redo_future.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>レトロスペクティブ解析の実施</p>
+    <p>re-calculate projection with different arguments</p>
     </div>
 
-    <pre class="usage"><span class='fu'>retro.est</span><span class='op'>(</span>
-  <span class='va'>res</span>,
-  n <span class='op'>=</span> <span class='fl'>5</span>,
-  stat <span class='op'>=</span> <span class='st'>"mean"</span>,
-  init.est <span class='op'>=</span> <span class='cn'>FALSE</span>,
-  b.fix <span class='op'>=</span> <span class='cn'>TRUE</span>,
-  remove.maxAgeF <span class='op'>=</span> <span class='cn'>FALSE</span>,
-  ssb.forecast <span class='op'>=</span> <span class='cn'>FALSE</span>,
-  sel.mat <span class='op'>=</span> <span class='cn'>NULL</span>
-<span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>redo_future</span><span class='op'>(</span><span class='va'>data_future</span>, <span class='va'>input_data_list</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>res</th>
-      <td><p>VPAの出力</p></td>
-    </tr>
-    <tr>
-      <th>n</th>
-      <td><p>除く年数</p></td>
-    </tr>
-    <tr>
-      <th>b.fix</th>
-      <td><p>b推定してる場合にbを固定するかどうか</p></td>
-    </tr>
-    <tr>
-      <th>remove.maxAgeF</th>
-      <td><p>Mohn's rhoを計算する際に最高齢のFを除くか（alphaを仮定して計算していることが多いから）</p></td>
-    </tr>
-    <tr>
-      <th>ssb.forecast</th>
-      <td><p>Mohn's rhoを計算する際にSSBは1年後を計算するか(last.catch.zero=TRUEのときのみ有効)</p></td>
-    </tr>
-    </table>
 
 
   </div>
