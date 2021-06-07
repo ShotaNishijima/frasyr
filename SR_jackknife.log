@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.141592653-p3.9.0-210218-2.6 (utf8.sjis) (TeX Live 2021/W32TeX) (preloaded format=platex 2021.5.24)  7 JUN 2021 10:18
+This is e-pTeX, Version 3.141592653-p3.9.0-210218-2.6 (utf8.sjis) (TeX Live 2021/W32TeX) (preloaded format=platex 2021.5.24)  7 JUN 2021 13:35
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -164,4 +164,4 @@ Here is how much of TeX's memory you used:
  934 hyphenation exceptions out of 8191
  54i,11n,62p,266b,378s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on SR_jackknife.dvi (2 pages, 4932 bytes).
+Output written on SR_jackknife.dvi (2 pages, 4940 bytes).
