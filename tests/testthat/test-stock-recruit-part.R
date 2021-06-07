@@ -413,3 +413,51 @@ test_that("check matching of fit.SRregime and fit.SR",{
   }
 })
 
+
+context("check jackknife outcome when AR=1 & out.AR=FALSE")
+test_that("check jackknife outcome when AR=1 & out.AR=FALSE",
+          {
+            load(system.file("extdata","res_vpa_pma.rda",package = "frasyr"))
+            SRdata <- get.SRdata(res_vpa_pma)
+            
+            full_inn <- fit.SR(SRdata,AR=1,out.AR=FALSE)
+            jack_inn <- jackknife.SR(full_inn,plot=FALSE)
+            
+            check_SR_jack = function(resSR) {
+              w = resSR$input$w
+              rho = resSR$pars$rho
+              resid = resSR$resid
+              resid2 = resSR$resid2
+              sigma = resSR$pars$sd
+              loglik = resSR$loglik
+              weight = sapply(1:length(w), function(i) {
+                if (i == 1) {
+                  1-rho^2
+                } else {
+                  if (i == 2) {
+                    if (w[i-1]==0) {
+                      1-rho^2
+                    } else{
+                      1
+                    }
+                  } else{
+                    if (w[i-1]==0) {
+                      1/(1+rho^2)
+                    } else{
+                      1
+                    }
+                  }
+                }
+              })
+              weight
+              sd_dif = abs(sqrt(sum(w*weight*resid2^2)/sum(w))-sigma)
+              loglik_dif = abs(sum(w*dnorm(resid2,0,sigma/sqrt(weight),log=TRUE))-loglik)
+              return( c(sd_dif,loglik_dif) ) 
+            }
+            
+            tmp = sapply(1:length(jack_inn), function(i) {
+              check_SR_jack(jack_inn[[i]])
+            })
+            
+            expect_equal(all(tmp < 1.0e-6),TRUE)
+          })

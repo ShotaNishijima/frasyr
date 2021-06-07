@@ -277,9 +277,11 @@ fit.SR <- function(SRdata,
           pred_resid <- c(pred_resid,rho^(1+before_zero[i])*resid[i-1-before_zero[i]])
         }
       }
-      sd2 = sum(w2*(resid-pred_resid)^2)/sum(w2) #variance
+      sd2 = sum(w2*(resid-pred_resid)^2)/sum(w) #variance
       sd = sqrt(sd2) #SD
-
+      # sd2 = sum(w2*(resid-pred_resid)^2)/sum(w2) #variance
+      # sd_tmp = sqrt(sd2) #SD
+      # 
       sigma = NULL
       for (i in 1:N) {
         if (w2[i]==0) {
