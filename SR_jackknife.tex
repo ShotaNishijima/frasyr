@@ -1,0 +1,71 @@
+\documentclass{jsarticle}
+\usepackage{amsmath}
+\title{再生産関係の自己相関推定におけるジャックナイフ解析}
+\author{西嶋　翔太\thanks{水産研究・教育機構 水産資源研究所}}
+\date{2021年6月6日}
+ 
+\begin{document}
+ 
+\maketitle
+
+加入量$R_t$と親魚量$SSB_t$ ($t = 1,2,...,T$) データにおいて、$t = s$のサンプルを除いたときの、１次の自己相関構造 (AR(1)) を持つ場合の再生産関係の推定について考える。再生産関係からの加入量の残差を
+$$ \epsilon_t = log(R_t) - log(f(a,b,SSB_t))$$
+と定義する。ここで、 $f(a,b,SSB_t)$は再生産関係からの予測値を表す。
+このとき、予測される残差は
+\begin{equation}
+E({\epsilon}_t) = 
+\begin{cases}
+0 & (t = 1) \\
+\rho \epsilon_{t-1} & (otherwise)
+\end{cases}
+\end{equation}
+で表される。$\rho$は１次の自己相関係数である ($-1 < \rho < 1$)。
+しかし、ジャックナイフ解析では$t = s$のサンプルが利用できないため、 $\epsilon_{s}$が不明である。
+したがって、$t = s + 1$のときの残差は$t = s - 1$からの予測値となり、
+\begin{equation}
+E({\epsilon}_t) = 
+\begin{cases}
+0 & (t = 1) \\
+\rho^2 \epsilon_{t-2} & (t = s + 1) \\
+\rho \epsilon_{t-1} & (otherwise)
+\end{cases}
+\end{equation}
+となる。  
+
+AR(1) のときの分散は
+\begin{equation}
+V({\epsilon}_t) = 
+\begin{cases}
+\dfrac{\sigma ^2}{1 - \rho ^2} & (t = 1) \\
+\sigma ^2 & (otherwise)
+\end{cases}
+\end{equation}
+となり、ここで$\sigma$は$t \geq 1$のときの標準偏差である。しかし、ジャックナイフ解析において$t = s + 1$のときの残差は$t = s - 1$からの予測値となるため、分散は
+\begin{equation}
+V({\epsilon}_t) = 
+\begin{cases}
+\dfrac{\sigma ^2}{1 - \rho ^2} & (t = 1) \\
+(1 + \rho ^2) \sigma ^2 & (t = s + 1) \\
+\sigma ^2 & (otherwise)
+\end{cases}
+\end{equation}
+となる。
+したがって、尤度は
+\begin{equation}
+{\epsilon}_t \sim 
+\begin{cases}
+Normal \left( 0, \dfrac{\sigma ^2}{1 - \rho ^2} \right) & (t = 1) \\
+Normal \left(\rho^2 \epsilon_{t-2}, (1 + \rho ^2) \sigma ^2 \right) & (t = s + 1) \\
+Normal \left(\rho \epsilon_{t-1}, \sigma ^2 \right) & (t \neq 1, s, s+1)
+\end{cases}
+\end{equation}
+で与えられる。
+重み付け最小二乗法として、
+$$ \xi _t = \epsilon _t - E( \epsilon_t ) $$
+と置くと、標準偏差は
+\begin{equation}
+\sigma = \sqrt{ \frac{\left( 1 - \rho ^ 2 \right) \xi _{1} ^ 2 + \xi _{2} ^ 2 + ... + \xi _{s-1} ^ 2 + \tfrac{1}{(1 + \rho ^2)} \xi _{s+1} ^ 2 + \xi _{T} ^ 2}{T - 1}} 
+\end{equation}
+で求めることができる。
+
+\end{document}
