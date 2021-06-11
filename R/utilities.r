@@ -1416,6 +1416,12 @@ convert_vpa_tibble <- function(vpares,SPRtarget=NULL){
                          convert_df(vpares$input$dat$M,  "natural_mortality"),
                          Recruitment,
                          Fratio)
+  if(class(vpares)=="sam") {
+    all_table <- bind_rows(all_table,
+                           convert_df(vpares$caa,"catch_number_estimated"))
+  } else{
+    all_table
+  }
 }
 
 #' fit.SRの結果をtibble形式に治す
