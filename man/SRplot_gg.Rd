@@ -41,4 +41,5 @@ SRplot_gg(
   res_SR2 <- fit.SR(SRdata=SRdata2, method="L1", AR=0)
   plot_SR(res_SR2)
 }
+
 }

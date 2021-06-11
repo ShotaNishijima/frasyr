@@ -331,6 +331,7 @@ plot_SRdata <- function(SRdata, type=c("classic","gg")[1]){
 #'   res_SR2 <- fit.SR(SRdata=SRdata2, method="L1", AR=0)
 #'   plot_SR(res_SR2)
 #' }
+#' 
 #' @export
 #'
 
@@ -350,7 +351,7 @@ SRplot_gg <- plot.SR <- plot_SR <- function(SR_result,refs=NULL,xscale=1000,xlab
 
   SRdata <- as_tibble(SR_result$input$SRdata) %>%
       mutate(type="obs")
-  if(is.null(SRdata$weight)) SRdata$weight <- 1
+  if(is.null(SRdata$weight)) SRdata$weight <- SR_result$input$w
   SRdata <- SRdata %>% mutate(weight=factor(weight,levels=c("0","1")))
   SRdata.pred <- as_tibble(SR_result$pred) %>%
     mutate(type="pred", year=NA, R=R)
@@ -436,6 +437,13 @@ SRplot_gg <- plot.SR <- plot_SR <- function(SR_result,refs=NULL,xscale=1000,xlab
                         col=c(col.SBtarget,col.SBlimit,col.SBban))
   }
   g1
+}
+
+#'
+#' @export
+
+SRplot_gg <- plot.SR <- function(...){
+    plot_SR(...)
 }
 
 #' 複数の再生産関係を比較する関数
@@ -922,7 +930,7 @@ plot_futures <- function(vpares=NULL,
 #'
 #' @export
 
-plot.futures <- function(fres.list,conf=c(0.1,0.5,0.9),target="SSB",legend.text="",xlim.tmp=NULL,y.scale=1,det.run=TRUE){
+plot_futures_simple <- function(fres.list,conf=c(0.1,0.5,0.9),target="SSB",legend.text="",xlim.tmp=NULL,y.scale=1,det.run=TRUE){
 
   if(legend.text=="") legend.text <- names(fres.list)
   if(is.null(legend.text)) legend.text <- 1:length(fres.list)
@@ -951,6 +959,20 @@ plot.futures <- function(fres.list,conf=c(0.1,0.5,0.9),target="SSB",legend.text=
   invisible(aa)
 }
 
+#' @export
+#' 
+
+plot.future <- function(...){
+    plot_future_simple(...)
+}
+
+#' @export
+#' 
+
+plot.futures <- function(...){
+    plot_futures_simple(...)
+}
+
 #' 一つの将来予測の結果をプロットする（ggplotは使わず）
 #'
 #' @param fres0 future.vpaからの出力結果
@@ -960,7 +982,7 @@ plot.futures <- function(fres.list,conf=c(0.1,0.5,0.9),target="SSB",legend.text=
 #'
 #' @export
 
-plot.future <- function(fres0,ylim.tmp=NULL,xlim.tmp=NULL,vpares=NULL,what=c(TRUE,TRUE,TRUE),conf=0.1,N.line=0,det.run=TRUE,
+plot_future_simple <- function(fres0,ylim.tmp=NULL,xlim.tmp=NULL,vpares=NULL,what=c(TRUE,TRUE,TRUE),conf=0.1,N.line=0,det.run=TRUE,
                         label=c("Biomass","SSB","Catch"),is.legend=TRUE,add=FALSE,col=NULL,...){
   ## 暗黙に、vssbなどのmatrixの1列目は決定論的なランの結果と仮定している
 
