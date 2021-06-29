@@ -44,6 +44,8 @@
 
 
 
+
+
 <!-- mathjax -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script>
@@ -55,9 +57,15 @@
 
 
 
+  
+
+  
+
   </head>
 
   <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-reference-index">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -71,7 +79,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">frasyr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.1.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.2.0.0</span>
       </span>
     </div>
 
@@ -218,9 +226,21 @@
       </tr><tr>
         
         <td>
+          <p><code><a href="boot_steepness.html">boot_steepness()</a></code> </p>
+        </td>
+        <td><p>再生産関係の推定結果からbootstrapを実行し、hの分布を計算する関数</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="caa.est.mat.html">caa.est.mat()</a></code> </p>
         </td>
         <td><p>年齢別生物パラメータとFと漁獲量を与えると与えた漁獲量と一致するFへの乗数を返す</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="caa.est.mat_wrong.html">caa.est.mat_wrong()</a></code> </p>
+        </td>
+        <td><p>年齢別生物パラメータとFと漁獲量を与えると与えた漁獲量と一致するFへの乗数を返す (optimを使わないでやろうとしたけどだめだったやつ）</p></td>
       </tr><tr>
         
         <td>
@@ -278,6 +298,18 @@
       </tr><tr>
         
         <td>
+          <p><code><a href="check_MSE_sd0.html">check_MSE_sd0()</a></code> </p>
+        </td>
+        <td><p>MSEの計算が正しいかを確認するための関数</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="check_consistent_w.html">check_consistent_w()</a></code> </p>
+        </td>
+        <td><p>fit.SRとfit.SRregimeの重み付け（どのデータを使うか）の設定方法は、引数wで与える場合とSRdata$weightで与える場合の２パターンある。両者が矛盾なく設定されているかを確認するための関数</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="colorize_table.html">colorize_table()</a></code> </p>
         </td>
         <td><p>値の大小に応じて表の背景にグラデーションをつける</p></td>
@@ -314,6 +346,12 @@
       </tr><tr>
         
         <td>
+          <p><code><a href="convert_Fvector.html">convert_Fvector()</a></code> </p>
+        </td>
+        <td><p>F at ageをVPAの結果から%SPRで変換したりするための関数</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="convert_SR_tibble.html">convert_SR_tibble()</a></code> </p>
         </td>
         <td><p>fit.SRの結果をtibble形式に治す</p></td>
@@ -323,6 +361,12 @@
           <p><code><a href="convert_faa_perSPR.html">convert_faa_perSPR()</a></code> </p>
         </td>
         <td><p>vpaデータ, 選択率の参照年1, 漁獲圧の参照年2を与えて、参照年2の漁獲圧のもとで参照年1の選択率となるF at ageを作成する関数。漁獲圧の変換は％SPR換算</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="convert_future_list_table.html">convert_future_list_table()</a></code> </p>
+        </td>
+        <td><p>future_vpaの結果オブジェクトのリストをtibble形式に変換する関数</p></td>
       </tr><tr>
         
         <td>
@@ -353,6 +397,24 @@
           <p><code><a href="derive_RP_value.html">derive_RP_value()</a></code> </p>
         </td>
         <td><p>管理基準値表から目的の管理基準値を取り出す関数</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="derive_biopar.html">derive_biopar()</a></code> </p>
+        </td>
+        <td><p>将来予測やVPAの結果から生物パラメータをとりだす</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="derive_future_summary.html">derive_future_summary()</a></code> </p>
+        </td>
+        <td><p>future_vpaの返り値に要約統計量を加えるための内部関数</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="detect_plus_group.html">detect_plus_group()</a></code> </p>
+        </td>
+        <td><p>与えられた個体群動態でプラスグループが考慮されているかどうか</p></td>
       </tr><tr>
         
         <td>
@@ -389,6 +451,12 @@
           <p><code><a href="draw_SRline.html">draw_SRline()</a></code> </p>
         </td>
         <td><p>Draw fitted SR line(s) over observed stock-recruitment plots</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="est_MSYRP.html">est_MSYRP()</a></code> </p>
+        </td>
+        <td><p>future_vpaを使ってMSY管理基準値などを計算するwrapper関数</p></td>
       </tr><tr>
         
         <td>
@@ -536,6 +604,12 @@
       </tr><tr>
         
         <td>
+          <p><code><a href="make_kobeII_table.html">make_kobeII_table()</a></code> </p>
+        </td>
+        <td><p>beta.simluationの結果などを読んで、kobeII talbeに整形する関数</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="make_kobe_ratio.html">make_kobe_ratio()</a></code> </p>
         </td>
         <td><p>Make Kobe ratio (?) for frasyr_tool</p></td>
@@ -572,18 +646,6 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="plot.future.html">plot(<i>&lt;future&gt;</i>)</a></code> </p>
-        </td>
-        <td><p>一つの将来予測の結果をプロットする（ggplotは使わず）</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="plot.futures.html">plot(<i>&lt;futures&gt;</i>)</a></code> </p>
-        </td>
-        <td><p>複数の将来予測の結果をプロットする（ggplotは使わず）</p></td>
-      </tr><tr>
-        
-        <td>
           <p><code><a href="plot_Fcurrent.html">plot_Fcurrent()</a></code> </p>
         </td>
         <td><p>F currentをプロットする</p></td>
@@ -608,15 +670,33 @@
       </tr><tr>
         
         <td>
+          <p><code><a href="plot_SR_AReffect.html">plot_SR_AReffect()</a></code> </p>
+        </td>
+        <td><p>ARの効果を差し引いて再生産関係をプロットする</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="plot_SRdata.html">plot_SRdata()</a></code> </p>
         </td>
         <td><p>SRdataをプロットする</p></td>
       </tr><tr>
         
         <td>
+          <p><code><a href="plot_future_simple.html">plot_future_simple()</a></code> </p>
+        </td>
+        <td><p>一つの将来予測の結果をプロットする（ggplotは使わず）</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="plot_futures.html">plot_futures()</a></code> </p>
         </td>
         <td><p>将来予測の複数の結果をggplotで重ね書きする</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="plot_futures_simple.html">plot_futures_simple()</a></code> </p>
+        </td>
+        <td><p>複数の将来予測の結果をプロットする（ggplotは使わず）</p></td>
       </tr><tr>
         
         <td>
@@ -741,6 +821,12 @@ Pull data frame from list</p></td>
       </tr><tr>
         
         <td>
+          <p><code><a href="summary_kobe_table.html">summary_kobe_table()</a></code> </p>
+        </td>
+        <td><p>kobe.tableをさらにsummaryする</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="table1.html">table1()</a></code> </p>
         </td>
         <td><p>Make table of latest SB and F</p></td>
@@ -759,6 +845,18 @@ Pull data frame from list</p></td>
       </tr><tr>
         
         <td>
+          <p><code><a href="take_interval.html">take_interval()</a></code> </p>
+        </td>
+        <td><p>@export</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="test_sd0_future.html">test_sd0_future()</a></code> </p>
+        </td>
+        <td><p>将来予測においてFが非常に小さい場合には決定論的予測と確率論的予測の平均がほぼ一致するかを確認するための関数</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="theme_SH.html">theme_SH()</a></code> </p>
         </td>
         <td><p>会議用の図のフォーマット</p></td>
@@ -771,9 +869,21 @@ Pull data frame from list</p></td>
       </tr><tr>
         
         <td>
+          <p><code><a href="tryall_SR.html">tryall_SR()</a></code> </p>
+        </td>
+        <td><p>再生産関係を網羅的にフィットする</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="use_rvpa_tmb.html">use_rvpa_tmb()</a></code> </p>
         </td>
         <td><p>Ridge VPAの計算をTMBで実行するためにcppファイルのコンパイル等をする関数</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="validate_sr.html">validate_sr()</a></code> </p>
+        </td>
+        <td><p>再生産関係のパラメタが想定した形になっているかを確認</p></td>
       </tr><tr>
         
         <td>
@@ -795,11 +905,11 @@ Pull data frame from list</p></td>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Momoko Ichinokawa, Akira Hayashi, Mitsuyo Miyagawa, Shin Fukui, Kohei Hamabe, Shota Nishijima, Hiroshi Okamura.</p>
+  <p><p>Developed by Momoko Ichinokawa, Akira Hayashi, Mitsuyo Miyagawa, Shin Fukui, Kohei Hamabe, Shota Nishijima, Hiroshi Okamura.</p></p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
+  <p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9001.</p></p>
 </div>
 
       </footer>
@@ -807,6 +917,8 @@ Pull data frame from list</p></td>
 
   
 
+
+  
 
   </body>
 </html>

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>一つの将来予測の結果をプロットする（ggplotは使わず） — plot.future • frasyr</title>
+<title>再生産関係のパラメタが想定した形になっているかを確認 — validate_sr • frasyr</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,10 @@
 
 
 
-<meta property="og:title" content="一つの将来予測の結果をプロットする（ggplotは使わず） — plot.future" />
-<meta property="og:description" content="一つの将来予測の結果をプロットする（ggplotは使わず）" />
+<meta property="og:title" content="再生産関係のパラメタが想定した形になっているかを確認 — validate_sr" />
+<meta property="og:description" content="再生産関係のパラメタが想定した形になっているかを確認" />
+
+
 
 
 
@@ -56,9 +58,15 @@
 
 
 
+  
+
+  
+
   </head>
 
   <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -72,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">frasyr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.1.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.2.0.0</span>
       </span>
     </div>
 
@@ -115,38 +123,39 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>一つの将来予測の結果をプロットする（ggplotは使わず）</h1>
+    <h1>再生産関係のパラメタが想定した形になっているかを確認</h1>
     
-    <div class="hidden name"><code>plot.future.Rd</code></div>
+    <div class="hidden name"><code>validate_sr.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>一つの将来予測の結果をプロットする（ggplotは使わず）</p>
+    <p>再生産関係のパラメタが想定した形になっているかを確認</p>
     </div>
 
-    <pre class="usage"><span class='co'># S3 method for future</span>
-<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span>
-  <span class='va'>fres0</span>,
-  ylim.tmp <span class='op'>=</span> <span class='cn'>NULL</span>,
-  xlim.tmp <span class='op'>=</span> <span class='cn'>NULL</span>,
-  vpares <span class='op'>=</span> <span class='cn'>NULL</span>,
-  what <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='cn'>TRUE</span>, <span class='cn'>TRUE</span>, <span class='cn'>TRUE</span><span class='op'>)</span>,
-  conf <span class='op'>=</span> <span class='fl'>0.1</span>,
-  N.line <span class='op'>=</span> <span class='fl'>0</span>,
-  det.run <span class='op'>=</span> <span class='cn'>TRUE</span>,
-  label <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Biomass"</span>, <span class='st'>"SSB"</span>, <span class='st'>"Catch"</span><span class='op'>)</span>,
-  is.legend <span class='op'>=</span> <span class='cn'>TRUE</span>,
-  add <span class='op'>=</span> <span class='cn'>FALSE</span>,
-  col <span class='op'>=</span> <span class='cn'>NULL</span>,
-  <span class='va'>...</span>
-<span class='op'>)</span></pre>
+    <div class="ref-usage sourceCode"><pre class='sourceCode r'><code><span class='fu'>validate_sr</span><span class='op'>(</span>SR <span class='op'>=</span> <span class='cn'>NULL</span>, method <span class='op'>=</span> <span class='cn'>NULL</span>, AR <span class='op'>=</span> <span class='cn'>NULL</span>, out.AR <span class='op'>=</span> <span class='cn'>NULL</span>, res_sr <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></code></pre></div>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>fres0</th>
-      <td><p>future.vpaからの出力結果</p></td>
+      <th>SR</th>
+      <td><p>再生産関係 (<code>"HS"</code>: Hockey-stick, <code>"BH"</code>: Beverton-Holt, <code>"RI"</code>: Ricker, <code>"Mesnil"</code>: Continuous HS)</p></td>
+    </tr>
+    <tr>
+      <th>method</th>
+      <td><p>最適化法（<code>"L2"</code>: 最小二乗法, <code>"L1"</code>: 最小絶対値法）</p></td>
+    </tr>
+    <tr>
+      <th>AR</th>
+      <td><p>自己相関を推定するか(1), しないか(0)</p></td>
+    </tr>
+    <tr>
+      <th>out.AR</th>
+      <td><p>自己相関係数を一度再生産関係を推定したのちに、外部から推定するか（1), 内部で推定するか(0)</p></td>
+    </tr>
+    <tr>
+      <th>res_sr</th>
+      <td><p>fit.SR の結果</p></td>
     </tr>
     </table>
 
@@ -162,11 +171,11 @@
 
       <footer>
       <div class="copyright">
-  <p>Developed by Momoko Ichinokawa, Akira Hayashi, Mitsuyo Miyagawa, Shin Fukui, Kohei Hamabe, Shota Nishijima, Hiroshi Okamura.</p>
+  <p><p>Developed by Momoko Ichinokawa, Akira Hayashi, Mitsuyo Miyagawa, Shin Fukui, Kohei Hamabe, Shota Nishijima, Hiroshi Okamura.</p></p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
+  <p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9001.</p></p>
 </div>
 
       </footer>
@@ -174,6 +183,8 @@
 
   
 
+
+  
 
   </body>
 </html>
