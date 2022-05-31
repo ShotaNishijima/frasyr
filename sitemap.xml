@@ -28,9 +28,6 @@
     <loc>/reference/Generation.Time.html</loc>
   </url>
   <url>
-    <loc>/reference/SRplot_gg.html</loc>
-  </url>
-  <url>
     <loc>/reference/SRregime_plot.html</loc>
   </url>
   <url>
@@ -94,6 +91,9 @@
     <loc>/reference/calc_steepness.html</loc>
   </url>
   <url>
+    <loc>/reference/calculate_all_pm.html</loc>
+  </url>
+  <url>
     <loc>/reference/check.SRdist.html</loc>
   </url>
   <url>
@@ -104,6 +104,9 @@
   </url>
   <url>
     <loc>/reference/check_consistent_w.html</loc>
+  </url>
+  <url>
+    <loc>/reference/check_fix_CVoption.html</loc>
   </url>
   <url>
     <loc>/reference/colorize_table.html</loc>
@@ -143,6 +146,9 @@
   </url>
   <url>
     <loc>/reference/corSR.html</loc>
+  </url>
+  <url>
+    <loc>/reference/create_dummy_vpa.html</loc>
   </url>
   <url>
     <loc>/reference/data.handler.html</loc>
@@ -199,6 +205,12 @@
     <loc>/reference/fit.SR.html</loc>
   </url>
   <url>
+    <loc>/reference/fit.SR_pen.html</loc>
+  </url>
+  <url>
+    <loc>/reference/fit.SR_tol.html</loc>
+  </url>
+  <url>
     <loc>/reference/fit.SRmig.html</loc>
   </url>
   <url>
@@ -218,6 +230,9 @@
   </url>
   <url>
     <loc>/reference/get.SRdata.html</loc>
+  </url>
+  <url>
+    <loc>/reference/get.ab.bh.html</loc>
   </url>
   <url>
     <loc>/reference/get_performance.html</loc>
@@ -265,7 +280,7 @@
     <loc>/reference/make_msytable.html</loc>
   </url>
   <url>
-    <loc>/reference/make_stock_table.html</loc>
+    <loc>/reference/make_stock_table2.html</loc>
   </url>
   <url>
     <loc>/reference/make_table.html</loc>
@@ -287,6 +302,9 @@
   </url>
   <url>
     <loc>/reference/plot_HCR_by_catch.html</loc>
+  </url>
+  <url>
+    <loc>/reference/plot_SR.html</loc>
   </url>
   <url>
     <loc>/reference/plot_SR_AReffect.html</loc>
@@ -362,6 +380,9 @@
   </url>
   <url>
     <loc>/reference/source_lines.html</loc>
+  </url>
+  <url>
+    <loc>/reference/specify.Mesnil.gamma.html</loc>
   </url>
   <url>
     <loc>/reference/summary_kobe_table.html</loc>

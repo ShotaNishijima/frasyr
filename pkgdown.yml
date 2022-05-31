@@ -1,9 +1,9 @@
 pandoc: 2.7.3
-pkgdown: 1.6.1.9001
-pkgdown_sha: 51268b0d9cb0588d7a6404a2b8ef4ee19c435e89
+pkgdown: 2.0.3.9000
+pkgdown_sha: 374c615670c9eb52ac2f7646a273fff974031fa6
 articles:
   Diagnostics-for-VPA: Diagnostics-for-VPA.html
   fittingSR: fittingSR.html
   vpa: vpa.html
-last_built: 2021-06-29T05:46Z
+last_built: 2022-05-31T05:42Z
 
