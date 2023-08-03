@@ -40,6 +40,9 @@
     <loc>/reference/arrange_weight.html</loc>
   </url>
   <url>
+    <loc>/reference/autocalc_ridgevpa.html</loc>
+  </url>
+  <url>
     <loc>/reference/autocor.plot.html</loc>
   </url>
   <url>
@@ -62,6 +65,9 @@
   </url>
   <url>
     <loc>/reference/boot_steepness.html</loc>
+  </url>
+  <url>
+    <loc>/reference/bubble_plot2.html</loc>
   </url>
   <url>
     <loc>/reference/caa.est.mat.html</loc>
@@ -247,6 +253,9 @@
     <loc>/reference/give_agename.html</loc>
   </url>
   <url>
+    <loc>/reference/hmm_SR.html</loc>
+  </url>
+  <url>
     <loc>/reference/index.html</loc>
   </url>
   <url>
@@ -353,6 +362,9 @@
   </url>
   <url>
     <loc>/reference/pull_var_from_kobeII_table.html</loc>
+  </url>
+  <url>
+    <loc>/reference/rank_HCR.html</loc>
   </url>
   <url>
     <loc>/reference/read.vpa.html</loc>

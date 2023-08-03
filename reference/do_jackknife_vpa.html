@@ -60,31 +60,41 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">do_jackknife_vpa</span><span class="op">(</span>
-  <span class="va">res</span>,
-  method <span class="op">=</span> <span class="st">"index"</span>,
-  what_plot <span class="op">=</span> <span class="cn">NULL</span>,
-  ncol <span class="op">=</span> <span class="fl">5</span>,
-  plot_year <span class="op">=</span> <span class="cn">NULL</span>,
-  scale_value <span class="op">=</span> <span class="cn">NULL</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">do_jackknife_vpa</span><span class="op">(</span></span>
+<span>  <span class="va">res</span>,</span>
+<span>  method <span class="op">=</span> <span class="st">"index"</span>,</span>
+<span>  what_plot <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  ncol <span class="op">=</span> <span class="fl">5</span>,</span>
+<span>  plot_year <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  scale_value <span class="op">=</span> <span class="cn">NULL</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>res</dt>
 <dd><p>VPAの結果のオブジェクト</p></dd>
+
+
 <dt>method</dt>
 <dd><p>データの抜き方。デフォルトは指数ごとに抜く("index")。他に各指数を各点ごとに抜く場合は"all"。</p></dd>
+
+
 <dt>what_plot</dt>
 <dd><p>作図したい項目を選べる。引数を与えない場合（<code>NULL</code>）、全て（SSB, biomass, U, catch, Recruitment, fish_number, fishing_mortality, weight, maturity, catch_number）をプロットする。</p></dd>
+
+
 <dt>ncol</dt>
 <dd><p>作図の列数。標準で5列なので、<code>what_plot</code>の数が5以下の場合は適宜変えた方がよい。</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>返ってくる値:
-<code>JKplot_vpa</code> ジャックナイフ法を行った結果のプロット。</p>
+    
+
+<p>返ってくる値:</p>
+<p></p>
+<p><code>JKplot_vpa</code> ジャックナイフ法を行った結果のプロット。</p>
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -114,7 +124,7 @@ https://ichimomo.github.io/frasyr/articles/Diagnostics-for-VPA.html</p></div>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.9000.</p>
 </div>
 
       </footer></div>

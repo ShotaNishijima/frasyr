@@ -60,39 +60,48 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">plot_yield</span><span class="op">(</span>
-  <span class="va">MSY_obj</span>,
-  <span class="va">refs_base</span>,
-  refs.label <span class="op">=</span> <span class="cn">NULL</span>,
-  refs.color <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"#00533E"</span>, <span class="st">"#edb918"</span>, <span class="st">"#C73C2E"</span><span class="op">)</span>,
-  AR_select <span class="op">=</span> <span class="cn">FALSE</span>,
-  xlim.scale <span class="op">=</span> <span class="fl">1.1</span>,
-  biomass.unit <span class="op">=</span> <span class="fl">1</span>,
-  labeling <span class="op">=</span> <span class="cn">TRUE</span>,
-  lining <span class="op">=</span> <span class="cn">TRUE</span>,
-  age.label.ratio <span class="op">=</span> <span class="fl">0.9</span>,
-  ylim.scale <span class="op">=</span> <span class="fl">1.2</span>,
-  future <span class="op">=</span> <span class="cn">NULL</span>,
-  future.replicate <span class="op">=</span> <span class="cn">NULL</span>,
-  past <span class="op">=</span> <span class="cn">NULL</span>,
-  past_year_range <span class="op">=</span> <span class="cn">NULL</span>,
-  plus_group <span class="op">=</span> <span class="cn">TRUE</span>,
-  future.name <span class="op">=</span> <span class="cn">NULL</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">plot_yield</span><span class="op">(</span></span>
+<span>  <span class="va">MSY_obj</span>,</span>
+<span>  <span class="va">refs_base</span>,</span>
+<span>  refs.label <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  refs.color <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"#00533E"</span>, <span class="st">"#edb918"</span>, <span class="st">"#C73C2E"</span><span class="op">)</span>,</span>
+<span>  AR_select <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  xlim.scale <span class="op">=</span> <span class="fl">1.1</span>,</span>
+<span>  biomass.unit <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  labeling <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  lining <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  age.label.ratio <span class="op">=</span> <span class="fl">0.6</span>,</span>
+<span>  ylim.scale <span class="op">=</span> <span class="fl">1.2</span>,</span>
+<span>  future <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  future.replicate <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  past <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  past_year_range <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  plus_group <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  future.name <span class="op">=</span> <span class="cn">NULL</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>MSY_obj</dt>
 <dd><p>est.MSYの結果のオブジェクト</p></dd>
+
+
 <dt>refs_base</dt>
 <dd><p>est.MSYから得られる管理基準値の表</p></dd>
+
+
 <dt>future</dt>
 <dd><p>将来予測結果のリスト。与えられると将来予測の結果を重ね書きする</p></dd>
+
+
 <dt>past</dt>
 <dd><p>VPA結果。与えられると過去の推定値を重ね書きする</p></dd>
+
+
 <dt>future.replicat</dt>
 <dd><p>将来予測結果から特定のreplicateのみを示す。futureで与えたリストの長さのベクトルを与える。</p></dd>
+
 </dl></div>
 
   </div>
@@ -107,7 +116,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.9000.</p>
 </div>
 
       </footer></div>

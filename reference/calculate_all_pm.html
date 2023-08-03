@@ -60,36 +60,61 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">calculate_all_pm</span><span class="op">(</span>
-  <span class="va">res_future</span>,
-  SBtarget <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>,
-  SBlimit <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>,
-  SBban <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>,
-  SBmin <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>,
-  MSY <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>,
-  is_scale <span class="op">=</span> <span class="cn">FALSE</span>,
-  unit <span class="op">=</span> <span class="fl">1</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">calculate_all_pm</span><span class="op">(</span></span>
+<span>  <span class="va">res_future</span>,</span>
+<span>  SBtarget <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>,</span>
+<span>  SBlimit <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>,</span>
+<span>  SBban <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>,</span>
+<span>  SBmin <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>,</span>
+<span>  MSY <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>,</span>
+<span>  is_scale <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  unit <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  period_extra <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  type <span class="op">=</span> <span class="st">"AS"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>res_future</dt>
 <dd><p>future_vpaの返り値</p></dd>
+
+
 <dt>SBtarget</dt>
 <dd><p>それを上回る・下回る確率を計算する。目標管理基準値</p></dd>
+
+
 <dt>SBlimit</dt>
 <dd><p>それを上回る・下回る確率を計算する。限界管理基準値</p></dd>
+
+
 <dt>SBban</dt>
 <dd><p>それを上回る・下回る確率を計算する。禁漁水準</p></dd>
+
+
 <dt>SBmin</dt>
 <dd><p>それを上回る・下回る確率を計算する。過去最低親魚量</p></dd>
+
+
 <dt>MSY</dt>
 <dd><p>それを上回る・下回る確率を計算する。MSY</p></dd>
+
+
 <dt>is_scale</dt>
 <dd><p>TRUEの場合、親魚量はSBtargetで、漁獲量はMSYで割った相対値が出力される。それ以外はそのまま</p></dd>
+
+
 <dt>unit</dt>
 <dd><p>確率を出力するときの単位。100を入れると％単位で結果が返される</p></dd>
+
+
+<dt>period_extra</dt>
+<dd><p>デフォルトではSSBminなどを一度でも下回るなど、期間を指定して計算する統計量はABC_year + 0:9, 0:4, 5:9, 1:10, 1:4, 6:10で決め打ちしているが、それ以外の期間を指定したいときにここの引数で与える</p></dd>
+
+
+<dt>type</dt>
+<dd><p>"AS": age-structured from frasyr, "PM": production model from frapmr</p></dd>
+
 </dl></div>
 
   </div>
@@ -104,7 +129,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.9000.</p>
 </div>
 
       </footer></div>
